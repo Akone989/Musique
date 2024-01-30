@@ -4,17 +4,17 @@ namespace Entity;
 
 class Utilisateur
 {
-    public $email;
-    public $pseudo;
-    public $mdp;
-    public $public;
-    public $statut;
-    public $date_inscription;
+    public  $email;
+    public  $pseudo;
+    public  $mdp;
+    public  $public;
+    public  $statut;
+    public  $date_inscription;
 
     public function __construct($email, $pseudo, $mdp, $public, $statut, $date_inscription)
     {
         $this->email = $email;
-        $this->pseudo = $pseudi;
+        $this->pseudo = $pseudo;
         $this->mdp = $mdp;
         $this->public = $public;
         $this->statut = $statut;
@@ -103,7 +103,7 @@ class Utilisateur
         /**
      * @return mixed
      */
-    public function getDate_inscription()
+    public function getDateInscription()
     {
         return $this->date_inscription;
     }
@@ -111,7 +111,7 @@ class Utilisateur
     /**
      * @param mixed $date_inscription
      */
-    public function setDate_inscription($date_inscription)
+    public function setDateInscription($date_inscription)
     {
         $this->date_inscription = $date_inscription;
     }
