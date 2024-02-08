@@ -1,21 +1,40 @@
 <?php
-require "../vendor/autoload.php";
+require_once("./models/Objet.php");
+require_once("./models/Utilisateur.php");
+require_once("./models/Model.php");
+require_once ("./controllers/UtilisateurController.php");
+require_once ("./controllers/ObjetController.php");
+use models\Model;
+use Controllers\UtilisateurController;
+use models\Utilisateur;
+use models\Objet;
+use Controllers\ObjetController;
 
-use Dotenv\Dotenv;
+if (file_exists('./vendor/autoload.php')) {
+    require './vendor/autoload.php';
+} else {
+    echo "erreur";
+}
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->load();
+require './vendor/autoload.php';
 
+$dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
+    $r->addRoute(['GET', 'POST'], '/user/register', function () {
+        $controller = new Controllers\UtilisateurController();
+        return $controller->register();
 
-$dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
+    });
+    $r->addRoute(['GET', 'POST'], '/user/authenticate', function () {
+        $controller = new Controllers\UtilisateurController();
+        return $controller->authenticate();
 
-    $r->addRoute('GET', '/web/objets/liste', ['Controllers\ObjetController', 'list']);
+    });
+
+    $r->addRoute('GET', '/web/objets/list', ['Controllers\ObjetController', 'list']);
+
 
 });
 
-// A NE PAS MODIFIER !!!
-
-// Fetch method and URI from somewhere
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 
@@ -26,8 +45,8 @@ if (false !== $pos = strpos($uri, '?')) {
 $uri = rawurldecode($uri);
 
 
-
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+
 
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::NOT_FOUND:
@@ -46,6 +65,3 @@ switch ($routeInfo[0]) {
         print $handler($vars);
         break;
 }
-
-
-

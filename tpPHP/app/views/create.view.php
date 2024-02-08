@@ -6,18 +6,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
+    <title>create</title>
 </head>
 <body>
+
 <style>
+
     body {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        margin: 0;
-        background-image: url("../img.png");
-
+        background-image: url("../medias/img.png");
+        background-size: 100%;
     }
     #form{
 
@@ -34,26 +35,52 @@
         padding: 20px;
         width: 400px;
         background-color: #fff;
+
+
+    }
+
+    button {
+        background-color: #6aa84f;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border:none;
+        cursor: pointer;
+
     }
 
 
-</style>
-<container id="f">
 
-    <H2>Se connecter </H2>
-<form method="post", id="form">
+</style>
+
+
+<container id="f">
+    <H2>Créer un compte</H2>
+
+    <form method="post" id="form">
     <div class="form-group">
         <label>Email :</label>
-        <input type="email" class="form-control" name="email">
+        <input type="email" class="form-control" name="Email">
     </div>
     <div class="form-group">
         <label >Mot de passe:</label>
-        <input type="password" class="form-control" name="mdp" >
+        <input type="password" class="form-control" name="Mdp" >
     </div>
-    <button type="submit" class="btn btn-secondary" style="color=#6aa84f"> Se connecter </button>
-    <a href="./create.view.php" >Créer un compte</a>
-
+    <div class="form-group">
+        <label >Confirmer le mot de passe:</label>
+        <input type="password" class="form-control" name="Mdp_retype" >
+    </div>
+    <div class="form-group">
+        <label >Pseudo:</label>
+        <input type="text" class="form-control" name="Pseudo">
+    </div>
+    <button type="submit" > Envoyer</button>
+    <a href=/user/authenticate>se connecter</a>
 </form>
+    <?php
+    echo $message;
+
+    ?>
 </container>
 </body>
 </html>
