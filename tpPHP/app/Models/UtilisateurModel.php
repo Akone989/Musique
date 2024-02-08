@@ -4,7 +4,7 @@
 namespace models;
 use models\Model;
 require_once("Model.php");
-class Utilisateur extends Model
+class UtilisateurModel extends Model
 {
 
 
