@@ -28,6 +28,23 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('GET', '/web/objets/list', ['Controllers\ObjetController', 'list']);
 
 
+    // ROUTES OBJETS/ALBUMS
+    $r->addRoute('GET', '/web/objet/create',['Controllers\ObjetController','create']);
+
+    $r->addRoute(['GET','POST'], '/web/objet/createPost',['Controllers\ObjetController','createPost']);
+
+    $r->addRoute('GET', '/web/objet/insertion',['Controllers\ObjetController','insertion']);
+
+    // ROUTES PISTES
+
+    $r->addRoute(['POST','GET'], '/web/piste/create',['Controllers\PisteController','create']);
+    
+    // ROUTES ARTISTES
+
+    $r->addRoute(['POST','GET'], '/web/artiste/create',['Controllers\ArtisteController','create']);
+
+    $r->addRoute(['POST','GET'], '/web/artiste/createPost',['Controllers\ArtisteController','createPost']);
+    
 });
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];

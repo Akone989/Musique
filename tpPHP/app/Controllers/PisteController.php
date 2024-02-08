@@ -1,6 +1,8 @@
 <?php
 namespace Controllers;
+
 use models\Piste;
+use Util\View;
 
 class PisteController{
 
@@ -11,6 +13,10 @@ class PisteController{
     }
 
     public function createPiste(){
+
+        $pModel = new PisteModel;
+        $view = new View;
+
         $vue= false;
 
         for ($i = 1; $i <= $nbd; $i++) {
@@ -20,7 +26,7 @@ class PisteController{
             }
             else{
                 if (!$vue) {
-                    $this->model->render("pistes.view");
+                    $view->render("pistes.view");
                     $vue = true;
                 }
             }
@@ -33,18 +39,18 @@ class PisteController{
                     $duree = $_POST["durée".$i];
                     $emplacement = $_POST['emplacement'];
                     $num = $_POST['num'];
-                    $this->model->render("test.view  ");
+                    $view->render("test.view  ");
 
                 } else {
                     if (!$vue) {
-                        $this->model->render("pistes.view");
+                        $view->render("pistes.view");
                         $vue = true;
                     }
                 }
 
             } else {
                 if (!$vue) {
-                    $this->model->render("pistes.view");
+                    $view->render("pistes.view");
                     $vue = true;
                 }
             }
