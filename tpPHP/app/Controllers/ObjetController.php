@@ -2,8 +2,8 @@
 
 namespace Controllers;
 
-use Models\ObjetModel;
 use Database\Database;
+use Models\ObjetModel;
 use Util\View;
 
 class ObjetController{

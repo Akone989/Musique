@@ -1,22 +1,17 @@
 <?php
-require_once("./models/Objet.php");
-require_once("./models/Utilisateur.php");
-require_once("./models/Model.php");
-require_once ("./controllers/UtilisateurController.php");
-require_once ("./controllers/ObjetController.php");
+
 use models\Model;
 use Controllers\UtilisateurController;
 use models\Utilisateur;
 use models\Objet;
 use Controllers\ObjetController;
 
-if (file_exists('./vendor/autoload.php')) {
-    require './vendor/autoload.php';
-} else {
-    echo "erreur";
-}
+require __DIR__ . '/../vendor/autoload.php';
+use Dotenv\Dotenv;
 
-require './vendor/autoload.php';
+$dotenv = Dotenv::createImmutable(__DIR__.'/../');
+$dotenv->load();
+
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute(['GET', 'POST'], '/user/register', function () {

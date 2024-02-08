@@ -18,7 +18,6 @@ class ObjetModel
     public function getObjet()
     {
         try {
-            // Utilisation de PDO sans spécifier de namespace
             $stmt = $this->db->getPdo()->query("SELECT * FROM Objet");
 
             $objets = [];

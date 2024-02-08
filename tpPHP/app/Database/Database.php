@@ -21,11 +21,9 @@ class Database
         $dsn = "mysql:host=$dbHost:$dbPort;dbname=$dbName;charset=$dbCharset";
 
         try {
-            // Utilisez PDO sans spécifier de namespace
-            $this->pdo = new PDO($dsn, $dbUser, $dbPassword);
+            $this->pdo = new \PDO($dsn, $dbUser, $dbPassword);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            // Gérer les erreurs de connexion
             echo "Erreur de connexion : " . $e->getMessage();
             die();
         }
