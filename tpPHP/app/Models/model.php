@@ -3,7 +3,7 @@
 namespace Models;
 
 use PDO;
-use Data\Database;
+use Database\Database;
 
 abstract class Model {
     

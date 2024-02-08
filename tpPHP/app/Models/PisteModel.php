@@ -1,8 +1,9 @@
 <?php
 
-namespace models;
+namespace Models;
 require_once("Model.php");
-use models\Model;
+use Models\Model;
+use Database\Database;
 
 class PisteModel extends Model{
 

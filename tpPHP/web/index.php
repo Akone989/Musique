@@ -7,13 +7,14 @@ use models\Objet;
 use Controllers\ObjetController;
 
 require __DIR__ . '/../vendor/autoload.php';
-use Dotenv\Dotenv;
+/*use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__.'/../');
-$dotenv->load();
+$dotenv->load();*/
 
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
+
     $r->addRoute(['GET', 'POST'], '/user/register', function () {
         $controller = new Controllers\UtilisateurController();
         return $controller->register();
@@ -44,7 +45,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute(['POST','GET'], '/web/artiste/create',['Controllers\ArtisteController','create']);
 
     $r->addRoute(['POST','GET'], '/web/artiste/createPost',['Controllers\ArtisteController','createPost']);
-    
+
 });
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];

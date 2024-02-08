@@ -3,7 +3,7 @@ namespace Util;
 
 class View {
 
-    public function render($path, $data = false)
+    public function render($path, $data = false, $data1 = false, $data2 = false)
     {
         if ($data) {
             foreach ($data as $key => $value) {

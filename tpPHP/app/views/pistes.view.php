@@ -65,30 +65,6 @@
 <form method="post">
     <container>
     <h1>Ajout des pistes</h1>
-        <?php if($type=="vinyle") {
-            for($i=1; $i<=$nbd; $i++) {
-                ?>
-                    <div style="display: inline-block; padding: 6px ;">
-                <div>
-                    <h4>Disque <?php echo $i; ?> </h4>
-                    <label for="RPM<?php echo $i; ?>">RPM:</label>
-                    <select id="RPM<?php echo $i; ?>" name="RPM<?php echo $i; ?>">
-                        <option value="33">33</option>
-                        <option value="45">45</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="taille<?php echo $i; ?>">Taille:</label>
-                    <select id="taille<?php echo $i; ?>" name="taille<?php echo $i; ?>">
-                        <option value="3">3"</option>
-                        <option value="7">7"</option>
-                        <option value="10">10"</option>
-                        <option value="12">12"</option>
-                    </select>
-                </div>
-                </div>
-            <?php }
-        } ?>
    <table class="table table-striped">
        <tr>
            <th>Titre</th>
@@ -103,7 +79,7 @@
                 <tr>
 
        <td><input type="text" name="titre<?php echo $i; ?>" id="titre"></td>
-       <td><input type="text" name="durée<?php echo $i; ?>" id="durée" </td>
+       <td><input type="text" name="durée<?php echo $i; ?>" id="durée"> </td>
        <td><input type="text" name="emplacement<?php echo $i; ?>" id="emplacement"></td>
        <td><input type="number" name="num<?php echo $i; ?>" id="num"></td>
                 </tr>

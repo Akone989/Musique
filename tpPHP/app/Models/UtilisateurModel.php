@@ -3,7 +3,9 @@
 
 namespace Models;
 use Models\Model;
-require_once("Model.php");
+use Database\Database;
+
+//require_once("Model.php");
 class UtilisateurModel extends Model
 {
 
