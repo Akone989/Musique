@@ -16,9 +16,10 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-image: url("../img.png");
-
+        background-image: url("../medias/img.png");
+        background-size: 100%;
     }
+
     #form{
 
 
@@ -35,6 +36,15 @@
         width: 400px;
         background-color: #fff;
     }
+    button {
+        background-color: #6aa84f;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border:none;
+        cursor: pointer;
+
+    }
 
 
 </style>
@@ -50,8 +60,8 @@
         <label >Mot de passe:</label>
         <input type="password" class="form-control" name="mdp" >
     </div>
-    <button type="submit" class="btn btn-secondary" style="color=#6aa84f"> Se connecter </button>
-    <a href="./create.view.php" >Créer un compte</a>
+    <button type="submit"  style="color=#6aa84f"> Se connecter </button>
+    <a href="/user/register" >Créer un compte</a>
 
 </form>
 </container>

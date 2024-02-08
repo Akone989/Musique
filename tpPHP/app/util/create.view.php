@@ -17,9 +17,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        margin: 0;
-        
-        background-image: url("./img.png");
+        background-image: url("../medias/img.png");
         background-size: 100%;
     }
     #form{
@@ -41,6 +39,15 @@
 
     }
 
+    button {
+        background-color: #6aa84f;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border:none;
+        cursor: pointer;
+
+    }
 
 
 
@@ -67,12 +74,13 @@
         <label >Pseudo:</label>
         <input type="text" class="form-control" name="Pseudo">
     </div>
-    <button type="submit" class="btn btn-secondary"> Envoyer</button>
-    <a href="../authenticate.php">se connecter</a>
+    <button type="submit" > Envoyer</button>
+    <a href=/user/authenticate>se connecter</a>
 </form>
-    <?php if(isset($message)){
-        echo $message;
-    } ?>
+    <?php
+    echo $message;
+
+    ?>
 </container>
 </body>
 </html>
