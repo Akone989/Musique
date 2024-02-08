@@ -4,23 +4,22 @@ namespace Entity;
 
 class Objet
 {
-    public  $id_o;
-    public  $nom_album;
-    public  $couverture;
-    public  $date_sortie;
-    public  $info_comp;
-    public  $valide;
-    public  $support;
+    private $id_o;
+    private $nom_album;
+    private $date_sortie;
+    private $support;
+    private $info_comp;
+    private $valide;
 
-    public function __construct($id_o, $nom_album, $couverture, $date_sortie, $info_comp, $valide, $support)
+
+    public function __construct($id_o, $nom_album, $date_sortie, $support, $info_comp, $valide)
     {
         $this->id_o = $id_o;
         $this->nom_album = $nom_album;
-        $this->couverture = $couverture;
         $this->date_sortie = $date_sortie;
+        $this->support = $support;
         $this->info_comp = $info_comp;
         $this->valide = $valide;
-        $this->support = $support;
     }
 
        /**

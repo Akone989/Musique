@@ -1,42 +1,51 @@
 <?php
 require "../vendor/autoload.php";
 
-// Charger les variables d'environnement
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/..');
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
-// Informations de la base de données
-$dbHost = $_ENV['DB_HOST'];
-$dbPort = $_ENV['DB_PORT'];
-$dbName = $_ENV['DB_NAME'];
-$dbUser = $_ENV['DB_USER'];
-$dbPassword = $_ENV['DB_PASSWORD'];
-$dbCharset = $_ENV['DB_CHARSET'];
 
+$dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
 
+    $r->addRoute('GET', '/web/objets/liste', ['Controllers\ObjetController', 'list']);
 
-// Chaîne de connexion PDO
-$dsn = "mysql:host=$dbHost:$dbPort;dbname=$dbName;charset=$dbCharset";
+});
 
-try {
-    // Créer une instance de PDO
-    $pdo = new PDO($dsn, $dbUser, $dbPassword);
+// A NE PAS MODIFIER !!!
 
-    // Configurer PDO pour afficher les erreurs
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// Fetch method and URI from somewhere
+$httpMethod = $_SERVER['REQUEST_METHOD'];
+$uri = $_SERVER['REQUEST_URI'];
 
-    // Utiliser la connexion PDO ici...
-
-    // Exemple : exécuter une requête
-    $stmt = $pdo->query("SELECT * FROM artiste");
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        
-    }
-
-    // Fermer la connexion
-    $pdo = null;
-} catch (PDOException $e) {
-    // Gérer les erreurs de connexion
-    echo "Erreur de connexion : " . $e->getMessage();
-    die();
+// Strip query string (?foo=bar) and decode URI
+if (false !== $pos = strpos($uri, '?')) {
+    $uri = substr($uri, 0, $pos);
 }
+$uri = rawurldecode($uri);
+
+
+
+$routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+
+switch ($routeInfo[0]) {
+    case FastRoute\Dispatcher::NOT_FOUND:
+        die('NOT_FOUND');
+        // ... 404 Not Found
+        break;
+    case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
+        $allowedMethods = $routeInfo[1];
+        // ... 405 Method Not Allowed
+        die('Not Allowed');
+        break;
+    case FastRoute\Dispatcher::FOUND:
+        $handler = $routeInfo[1];
+        $vars = $routeInfo[2];
+
+        print $handler($vars);
+        break;
+}
+
+
+

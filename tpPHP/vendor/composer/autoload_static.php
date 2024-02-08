@@ -47,6 +47,7 @@ class ComposerStaticInit65fc1b3326cfbc538211dcef2a499522
         'D' => 
         array (
             'Dotenv\\' => 7,
+            'Database\\' => 9,
         ),
         'C' => 
         array (
@@ -57,7 +58,7 @@ class ComposerStaticInit65fc1b3326cfbc538211dcef2a499522
     public static $prefixDirsPsr4 = array (
         'Util\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/util',
+            0 => __DIR__ . '/../..' . '/app/Util',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -94,6 +95,10 @@ class ComposerStaticInit65fc1b3326cfbc538211dcef2a499522
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+        'Database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/Database',
         ),
         'Controllers\\' => 
         array (
